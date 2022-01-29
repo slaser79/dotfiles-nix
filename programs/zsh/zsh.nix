@@ -11,7 +11,6 @@
         "git"
         "tmuxinator"
         "nix-shell"
-        "direnv"
       ];
     };
   };

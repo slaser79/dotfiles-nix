@@ -2,23 +2,10 @@
 {
   programs.git = {
     enable = true;
-    userName = "Sebastian Tunstig";
-    userEmail = "sebastian.tunstig@gmail.com";
+    userName = "Shingi Mureriwa";
+    userEmail = "shingi79@hotmail.com";
     aliases = {
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit";
-      st = "status -s";
-      s = "status";
-      a = "!git add . && git status";
-      ci = "commit";
-      co = "checkout";
-      d = "difftool";
-      dp = "!git --no-pager diff";
-      ds = "diff --staged";
-      dsp = "!git --no-pager diff --staged";
-      main = "checkout main";
-      master = "checkout master";
-      no-remotes = "!git branch --format '%(refname:short) %(upstream:short)' | awk '{if (!$2) print $1;}'";
-      alias = "!git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort";
     };
     extraConfig = {
       core.editor = "vim";
@@ -32,23 +19,8 @@
       merge.conflictStyle = "diff3";
       mergetool.keepBackup = false;
       mergetool.trustExitCode = true;
-      mergetool.ediff.keepBackup = false;
-      mergetool.ediff.cmd = ''
-        emacs --eval \"\
-        (progn\
-          (defun ediff-write-merge-buffer ()\
-            (let ((file ediff-merge-store-file))\
-              (set-buffer ediff-buffer-C)\
-              (write-region (point-min) (point-max) file)\
-              (message \\\"Merge buffer saved in: %s\\\" file)\
-              (set-buffer-modified-p nil)\
-              (sit-for 1)))\
-          (setq ediff-quit-hook 'kill-emacs\
-                ediff-quit-merge-hook 'ediff-write-merge-buffer)\
-          (ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\"\
-                                           \\\"$BASE\\\" nil \\\"$MERGED\\\"))\"
       '';
-      github.user = "sebastiant";
+      github.user = "slaser79";
       color.ui = true;
       fetch.prune = true;
       pull.rebase = true;
