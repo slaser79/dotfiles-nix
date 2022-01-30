@@ -9,19 +9,23 @@
   };
   outputs = { home-manager, nixpkgs, ...}:
     let
+      defaultUser = "shingi79";
       homeManagerConfFor = config: { ... }: {
         nixpkgs.overlays = [ ];
         imports = [ config ];
       };
-      wsl2UbuntuSystem = home-manager.lib.homeManagerConfiguration {
-        configuration = homeManagerConfFor ./hosts/xps-wsl2-ubuntu/home.nix;
-        system = "x86_64-linux";
-        homeDirectory = "/home/shingi79";
-        username = "shingi79";
-        stateVersion = "21.05";
-      };
+      wsl2UbuntuSystemFor =user: home-manager.lib.homeManagerConfiguration {
+                                    configuration = homeManagerConfFor ./hosts/xps-wsl2-ubuntu/home.nix;
+                                    system = "x86_64-linux";
+                                    homeDirectory = "/home/${user}";
+                                    username = "${user}";
+                                    stateVersion = "21.05";
+                                  };
+      defaultWslUbuntu = wsl2UbuntuSystemFor defaultUser; 
     in {
-      wsl2ubuntu = wsl2UbuntuSystem.activationPackage;
-      defaultPackage.x86_64-linux = wsl2UbuntuSystem.activationPackage;
+      wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
+      wsl2ubuntug49771      = (wsl2UbuntuSystemFor "g49771") .activationPackage;
+      defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;
+
     };
 }
