@@ -16,19 +16,13 @@ program-specific configuration live under
 
 # My toolbox
 
--   [GNU Emacs](https://www.gnu.org/software/emacs/) with plugins such
-    as evil-mode, ivy, projectile, magit, org-mode, lsp-mode and more
 -   [neovim](https://neovim.io/) for basic text editing
--   [xmonad](https://xmonad.org/) as window-manager, with
-    [Dunst](https://dunst-project.org/) for notifications and
-    [polybar](https://polybar.github.io/) as status bar
 -   [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/) as
     shell
--   [Alacritty](https://github.com/alacritty/alacritty) as terminal
-    emulator
--   Appearance-wise i use [Iosevka](https://github.com/be5invis/Iosevka)
-    as my default font and [Solarized
-    dark](https://ethanschoonover.com/solarized/) as color theme
+-   [tmux](https://github.com/tmux/wiki) for managing terminal windows
+-   Terminal is form
+-   I use the [power level 10k theme](https://github.com/romkatv/powerlevel10k) for Zsh and [dracula](https://github.com/dracula/vim) as my default theme for vim 
+-   I use the windows terminal for the terminal settings for WSL (manually configured)
 
 # Setup
 
@@ -42,27 +36,27 @@ program-specific configuration live under
 -   Clone this repository
 
     ``` {.shell}
-    $ git clone git@github.com:sebastiant/dotfiles.git
-    $ cd dotfiles
+    $ git clone git@github.com:slaser79/dotfiles-nix.git
+    $ cd dotfiles-nix
     ```
 
 -   Change name, username and email if you\'re not me
 
     ``` {.shell}
-    $ grep sebastian -r .
+    $ grep -E '(shingi|slaser)' -r .
     $ # edit away!
     ```
 
 -   Create the first generation
 
-    -   NixOS
-
-        ``` {.shell}
-        $ sudo nixos-rebuild switch --flake '.#'
-        ```
 
     -   Linux and macOS
 
         ``` {.shell}
         $ nix build && sudo ./result/activate && rm ./result
+        ```
+    -   NixOS (Not implementated)
+
+        ``` {.shell}
+        $ sudo nixos-rebuild switch --flake '.#'
         ```
