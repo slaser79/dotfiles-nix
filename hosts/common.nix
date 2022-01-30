@@ -10,11 +10,11 @@
   home = {
     stateVersion = "21.05";
     packages = with pkgs; [
-      cabal-install
+      #cabal-install
       #cachix
       #gawk
       #jsonnet
-      lorri
+      #lorri
       #mypy
       #pandoc
       #pyright
@@ -35,6 +35,30 @@
       #elixir_ls
       #nodePackages.javascript-typescript-langserver
       #nodePackages.uglify-js
+      # previously in my nix-env
+      nix-diff
+      nix-index
+      nix-prefetch-git
+      nixos-shell
+      pcre-cpp
+      binutils
+      cabal2nix
+      cachix
+      direnv
+      entr
+      ghcid
+      glow
+      grip
+      ncdu
+      niv
+      nixfmt
+      nodejs
+      numactl
+      pandoc
+      postgresql
+      python3
+      shellcheck
+      sqlite
     ];
   };
 

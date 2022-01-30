@@ -61,7 +61,7 @@ endif
 
 "let g:gruvbox_italic=1
 if has('nvim')
-        colorscheme molokai
+        colorscheme dracula
 else 
         colorscheme gruvbox
 endif

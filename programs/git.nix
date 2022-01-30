@@ -19,7 +19,6 @@
       merge.conflictStyle = "diff3";
       mergetool.keepBackup = false;
       mergetool.trustExitCode = true;
-      '';
       github.user = "slaser79";
       color.ui = true;
       fetch.prune = true;
