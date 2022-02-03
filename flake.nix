@@ -6,9 +6,15 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    coc-sh-src = {
+        flake = false;
+        url = github:josa42/coc-sh;
+    };
+
   };
-  outputs = { home-manager, nixpkgs, ...}:
+  outputs = { home-manager, nixpkgs, coc-sh-src, ...}:
     let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
       defaultUser = "shingi79";
       homeManagerConfFor = config: { ... }: {
         nixpkgs.overlays = [ ];
@@ -26,6 +32,12 @@
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
       wsl2ubuntug49771      = (wsl2UbuntuSystemFor "g49771") .activationPackage;
       defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;
+      #coc is still work in progress
+      coc-sh = pkgs.yarn2nix-moretea.mkYarnPackage {
+          name = "coc-sh";
+          src  = coc-sh-src;
+      };
+      
 
     };
 }

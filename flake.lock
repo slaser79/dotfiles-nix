@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "coc-sh-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1641582055,
+        "narHash": "sha256-1R5LbgktsHyMw/qN1cDZXCwnJcLaUwgCPRl1t05cclM=",
+        "owner": "josa42",
+        "repo": "coc-sh",
+        "rev": "c3d808d7a0bf20d999c2ab84f899133cfdfaffc2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "josa42",
+        "repo": "coc-sh",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -38,6 +54,7 @@
     },
     "root": {
       "inputs": {
+        "coc-sh-src": "coc-sh-src",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }

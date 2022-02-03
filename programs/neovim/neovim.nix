@@ -14,6 +14,7 @@
       coc-json
       coc-nvim
       coc-python
+      #coc-sh
       #coc-sql
       coc-tsserver
       coc-vimlsp
@@ -33,6 +34,8 @@
       vim-airline-themes
       vim-autoformat
       vim-colors-solarized
+      vim-dadbod
+      vim-dadbod-ui
       vim-devicons
       vim-hoogle
       vim-jsx-pretty
@@ -69,6 +72,11 @@
           filetypes = [ "py" ];
           rootPatterns = [ "pyproject.toml" "setup.py" "setup.cfg" ];
         };
+        bash =  {
+            command    = "bash-language-server";
+            args       = ["start"];
+            filetypes  = ["sh"];
+          };
       };
      "eslint.autoFixOnSave" = true;
      "eslint.filetypes" = ["javascript"  "javascriptreact" "typescript"  "typescriptreact"];
