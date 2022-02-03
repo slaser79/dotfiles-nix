@@ -28,7 +28,7 @@ program-specific configuration live under
 
 -   [Install
     nix](https://nixos.org/manual/nix/stable/#sect-multi-user-installation)
-    and set up flakes
+    and set up [flakes] (https://nixos.wiki/Flakes)
 
 -   [Set up
     home-manager](https://github.com/nix-community/home-manager#installation)
