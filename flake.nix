@@ -71,7 +71,7 @@
     {
       packages.x86_64-linux =
         let
-          # This is probably a bit too clever
+          # This is required to create a proper derivation to reference in the overlay for nixpkgs 
           mkVimPlugins = pnames:
             builtins.listToAttrs (
               builtins.map

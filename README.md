@@ -17,6 +17,8 @@ program-specific configuration live under
 # My toolbox
 
 -   [neovim](https://neovim.io/) for basic text editing
+    - One configuration using COC for lsp
+    - Another configuration using inbuilt nvim lsp and generally the nvim plugin ecosystem
 -   [Zsh](https://www.zsh.org/) with [Oh My Zsh](https://ohmyz.sh/) as
     shell
 -   [tmux](https://github.com/tmux/wiki) for managing terminal windows
