@@ -3,7 +3,7 @@
   imports =
     [
       ../programs/zsh/zsh.nix
-      ../programs/neovim/neovim.nix
+      ../programs/neovim-lsp
       ../programs/git.nix
     ];
 

@@ -22,13 +22,12 @@ inoremap <c-s> <Esc>:update<CR>
 noremap <c-s> :update<CR>
 
 "Keyboard shoutcut move lines up / down 
-"These do not appear to work so disabled
-"nnoremap <A-j> :m .+1<CR>==
-"nnoremap <A-k> :m .-2<CR>==
-"inoremap <A-j> <Esc>:m .+1<CR>==gi
-"inoremap <A-k> <Esc>:m .-2<CR>==gi
-"vnoremap <A-j> :m '>+1<CR>gv=gv
-"vnoremap <A-k> :m '<-2<CR>gv=gv
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+inoremap <C-j> <Esc>:m .+1<CR>==gi
+inoremap <C-k> <Esc>:m .-2<CR>==gi
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
 
 if !has('nvim')
 	call plug#begin('~/.vim/plugged')
@@ -70,7 +69,7 @@ endif
 
 "let g:gruvbox_italic=1
 if has('nvim')
-        colorscheme dracula
+        colorscheme molokai
 else 
         colorscheme gruvbox
 endif
@@ -144,10 +143,10 @@ nnoremap <leader>r  :call SendCommandToTerminal (":r")<cr><esc>
 
 "grepping for words under cursor
 
-nnoremap gr :grep -R <cword> *<CR>
-nnoremap Gr :grep -R <cword> %:p:h/*<CR>
-nnoremap gR :grep -R '\b<cword>\b' *<CR>
-nnoremap GR :grep -R '\b<cword>\b' %:p:h/*<CR>
+nnoremap gr :grep  <cword> *<CR>
+nnoremap Gr :grep  <cword> %:p:h/*<CR>
+nnoremap gR :grep  '\b<cword>\b' *<CR>
+nnoremap GR :grep  '\b<cword>\b' %:p:h/*<CR>
 
 
 " Settings for COC
@@ -199,6 +198,7 @@ if has('nvim')
   nmap <silent> gi <Plug>(coc-implementation)
   nmap <silent> gr <Plug>(coc-references)
 
+  
   " Use K to show documentation in preview window.
   nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -261,6 +261,7 @@ if has('nvim')
   xmap ac <Plug>(coc-classobj-a)
   omap ac <Plug>(coc-classobj-a)
 
+  
   if has('vim-0.4.0') || has('patch-8.2.0750')
     nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
     nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"

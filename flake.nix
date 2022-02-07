@@ -1,43 +1,93 @@
 {
   description = "NixOS configuration and home-manager configurations for mac and debian gnu/linux";
   inputs = {
-    nixpkgs.url =  "github:NixOS/nixpkgs/?rev=0432195a4b8d68faaa7d3d4b355260a3120aeeae"; 
+    nixpkgs.url = "github:NixOS/nixpkgs/?rev=0432195a4b8d68faaa7d3d4b355260a3120aeeae";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     coc-sh-src = {
-        flake = false;
-        url = github:josa42/coc-sh;
+      flake = false;
+      url = github:josa42/coc-sh;
+    };
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    heirline-nvim = {
+      url = "github:rebelot/heirline.nvim";
+      flake = false;
+    };
+    filetype-nvim = {
+      url = "github:nathom/filetype.nvim";
+      flake = false;
+    };
+    rnix-lsp = {
+      url = "github:nix-community/rnix-lsp";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lsp_lines-nvim = {
+      url = "git+https://git.sr.ht/~whynothugo/lsp_lines.nvim?ref=main";
+      flake = false;
+    };
+
+    null-ls-nvim = {
+      url = "github:jose-elias-alvarez/null-ls.nvim";
+      flake = false;
+    };
+
+
   };
-  outputs = { home-manager, nixpkgs, coc-sh-src, ...}:
+  outputs = { self, home-manager, nixpkgs, coc-sh-src, neovim-nightly-overlay, ... }@inputs:
     let
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
+
       defaultUser = "shingi79";
+      vimPluginsOverlay = final: prev: {
+        vimPlugins = prev.vimPlugins // {
+          inherit (self.packages.${prev.system})
+            filetype-nvim
+            heirline-nvim
+            lsp_lines-nvim
+            null-ls-nvim;
+        };
+      };
+
+      overlays = [
+        neovim-nightly-overlay.overlay
+        vimPluginsOverlay
+      ];
       homeManagerConfFor = config: { ... }: {
-        nixpkgs.overlays = [ ];
+        nixpkgs.overlays = overlays;
         imports = [ config ];
       };
-      wsl2UbuntuSystemFor =user: home-manager.lib.homeManagerConfiguration {
-                                    configuration = homeManagerConfFor ./hosts/xps-wsl2-ubuntu/home.nix;
-                                    system = "x86_64-linux";
-                                    homeDirectory = "/home/${user}";
-                                    username = "${user}";
-                                    stateVersion = "21.05";
-                                  };
-      defaultWslUbuntu = wsl2UbuntuSystemFor defaultUser; 
-    in {
-      wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
-      wsl2ubuntug49771      = (wsl2UbuntuSystemFor "g49771") .activationPackage;
-      defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;
-      #coc is still work in progress
-      coc-sh = pkgs.yarn2nix-moretea.mkYarnPackage {
-          name = "coc-sh";
-          src  = coc-sh-src;
+      wsl2UbuntuSystemFor = user: home-manager.lib.homeManagerConfiguration {
+        configuration = homeManagerConfFor ./hosts/xps-wsl2-ubuntu/home.nix;
+        system = "x86_64-linux";
+        homeDirectory = "/home/${user}";
+        username = "${user}";
+        stateVersion = "21.05";
       };
-      
+      defaultWslUbuntu = wsl2UbuntuSystemFor defaultUser;
+    in
+    {
+      packages.x86_64-linux =
+        let
+          # This is probably a bit too clever
+          mkVimPlugins = pnames:
+            builtins.listToAttrs (
+              builtins.map
+                (pname: pkgs.lib.nameValuePair pname
+                  (pkgs.vimUtils.buildVimPluginFrom2Nix {
+                    inherit pname;
+                    src = inputs.${pname};
+                    version = inputs.${pname}.shortRev;
+                  }))
+                pnames);
+        in
+        mkVimPlugins [ "heirline-nvim" "filetype-nvim" "lsp_lines-nvim" "null-ls-nvim" ];
+      wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
+      wsl2ubuntug49771 = (wsl2UbuntuSystemFor "g49771").activationPackage;
+      defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;
+
 
     };
 }
