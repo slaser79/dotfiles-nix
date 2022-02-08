@@ -33,6 +33,12 @@
       url = "github:jose-elias-alvarez/null-ls.nvim";
       flake = false;
     };
+    #sql language server
+
+    sqls = {
+      url = "github:lighttiger2505/sqls";
+      flake = false;
+    };
 
 
   };
@@ -87,7 +93,27 @@
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
       wsl2ubuntug49771 = (wsl2UbuntuSystemFor "g49771").activationPackage;
       defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;
+      sqls =
+
+        pkgs.buildGoModule
+          rec {
+            pname = "sqls";
+            version = "0.2.22";
+
+            src = inputs.sqls;
 
 
+            vendorSha256 = "sha256-fo5g6anMcKqdzLG8KCJ/T4uTOp1Z5Du4EtCHYkLgUpo=";
+
+            ldflags = [ "-s" "-w" "-X main.version=${version}" "-X main.revision=${src.rev}" ];
+
+            meta = with pkgs.lib; {
+              homepage = "https://github.com/lighttiger2505/sqls";
+              description = "SQL language server written in Go";
+              license = licenses.mit;
+              maintainers = [ maintainers.marsam ];
+            };
+
+          };
     };
 }

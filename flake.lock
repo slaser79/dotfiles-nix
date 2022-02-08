@@ -261,7 +261,24 @@
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "null-ls-nvim": "null-ls-nvim",
-        "rnix-lsp": "rnix-lsp"
+        "rnix-lsp": "rnix-lsp",
+        "sqls": "sqls"
+      }
+    },
+    "sqls": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643178635,
+        "narHash": "sha256-xtvm/NVL98dRzQL1id/WwT/NdsnB7qTRVR7jfrRsabY=",
+        "owner": "lighttiger2505",
+        "repo": "sqls",
+        "rev": "620def1f95a7665abc8be87576ac522c9774e3db",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lighttiger2505",
+        "repo": "sqls",
+        "type": "github"
       }
     },
     "utils": {
