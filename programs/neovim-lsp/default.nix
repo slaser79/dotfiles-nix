@@ -68,6 +68,12 @@
       python39Packages.black # Python code formatter
     ];
     extraConfig = ''
+      "vim settings
+      set relativenumber
+      set hlsearch
+      set cursorline
+      set cursorcolumn
+      set nowrap
       "Keyboard shortcuts
       inoremap jk <ESC>
       inoremap <c-s> <Esc>:update<CR>
