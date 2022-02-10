@@ -36,7 +36,7 @@ local shared_config = {
 }
 
 local lspconfig = require('lspconfig')
-local servers = { 'sumneko_lua', 'rnix', 'ccls', 'texlab', 'bashls', 'pyright' }
+local servers = { 'sumneko_lua', 'rnix', 'ccls', 'texlab', 'bashls', 'pyright', 'sqls' }
 
 -- Apply server-specific config from lsp dir
 for _, server in ipairs(servers) do
@@ -44,7 +44,16 @@ for _, server in ipairs(servers) do
   if not ok then
     module = {}
   end
-  lspconfig[server].setup(vim.tbl_deep_extend('force', module, shared_config))
+  local updated_module = {}
+  if module.on_attach then
+    updated_module.on_attach = function (client,bufnr)
+      shared_config.on_attach(client,bufnr)
+      module.on_attach(client,bufnr)
+    end
+  else
+      updated_module = module
+  end
+  lspconfig[server].setup(vim.tbl_deep_extend('force', shared_config, updated_module))
 end
 
 -- Show LSP diagnostics in virtual lines

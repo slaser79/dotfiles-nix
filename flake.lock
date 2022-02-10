@@ -262,7 +262,8 @@
         "nixpkgs": "nixpkgs_2",
         "null-ls-nvim": "null-ls-nvim",
         "rnix-lsp": "rnix-lsp",
-        "sqls": "sqls"
+        "sqls": "sqls",
+        "sqls-nvim": "sqls-nvim"
       }
     },
     "sqls": {
@@ -278,6 +279,22 @@
       "original": {
         "owner": "lighttiger2505",
         "repo": "sqls",
+        "type": "github"
+      }
+    },
+    "sqls-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1644154249,
+        "narHash": "sha256-iyGQUqGW9meMH4bHNoNo+om73jeUb0/DeiqY0hyG76Q=",
+        "owner": "nanotee",
+        "repo": "sqls.nvim",
+        "rev": "aec56983fc394a2566e0a3e1aa81525b34fa6fb1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nanotee",
+        "repo": "sqls.nvim",
         "type": "github"
       }
     },

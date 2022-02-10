@@ -27,6 +27,7 @@
       nvim-colorizer-lua # Colour code colorizer
       nvim-web-devicons # Coloured file icons
       nvim-lspconfig # LSP default configurations
+      sqls-nvim
       plenary-nvim # Telescope-nvim dependency
       telescope-fzf-native-nvim # FZF sorter for telescope
       telescope-nvim # Fuzzy finder
@@ -59,6 +60,7 @@
       rnix-lsp # Nix LSP
       statix # Nix code linter
       stylua # Lua code formatter
+      sqls #sql language-server
       luajitPackages.luacheck # Lua linter
       sumneko-lua-language-server # Lua LSP
       texlab # LaTeX LSP

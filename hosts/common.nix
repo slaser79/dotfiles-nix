@@ -44,6 +44,7 @@
       binutils
       cabal2nix
       cachix
+      cntr
       direnv
       entr
       ghcid
