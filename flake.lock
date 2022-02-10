@@ -16,6 +16,22 @@
         "type": "github"
       }
     },
+    "dressing-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643846207,
+        "narHash": "sha256-4C29d4prcMoN/bwJVJaVQdYw53v1k+QyQC8g5L/UXEQ=",
+        "owner": "stevearc",
+        "repo": "dressing.nvim",
+        "rev": "8e8f7e525941ee2080a39b98c1b1f5466a6ea187",
+        "type": "github"
+      },
+      "original": {
+        "owner": "stevearc",
+        "repo": "dressing.nvim",
+        "type": "github"
+      }
+    },
     "filetype-nvim": {
       "flake": false,
       "locked": {
@@ -60,6 +76,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "friendly-snippets-vim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1643810276,
+        "narHash": "sha256-zgivFhDH7jM/0z2EwWnThc/E65s98vdYwv+VeG3Hixk=",
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets",
+        "rev": "2e575549910571ff5abb6b02178c69ad760a4e00",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets",
         "type": "github"
       }
     },
@@ -229,6 +261,22 @@
         "type": "github"
       }
     },
+    "nvim-cmp": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1644037206,
+        "narHash": "sha256-i3lJCquBHpHJ5Mt7hCwcT3ZfVAoAiwkg4NslSXQdXKA=",
+        "owner": "hrsh7th",
+        "repo": "nvim-cmp",
+        "rev": "a7fea2ca9f29869c75c3e2ccb683e7740868ba8b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hrsh7th",
+        "repo": "nvim-cmp",
+        "type": "github"
+      }
+    },
     "rnix-lsp": {
       "inputs": {
         "naersk": "naersk",
@@ -254,13 +302,16 @@
     "root": {
       "inputs": {
         "coc-sh-src": "coc-sh-src",
+        "dressing-nvim": "dressing-nvim",
         "filetype-nvim": "filetype-nvim",
+        "friendly-snippets-vim": "friendly-snippets-vim",
         "heirline-nvim": "heirline-nvim",
         "home-manager": "home-manager",
         "lsp_lines-nvim": "lsp_lines-nvim",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
         "null-ls-nvim": "null-ls-nvim",
+        "nvim-cmp": "nvim-cmp",
         "rnix-lsp": "rnix-lsp",
         "sqls": "sqls",
         "sqls-nvim": "sqls-nvim"

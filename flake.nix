@@ -45,6 +45,20 @@
       flake = false;
     };
 
+    dressing-nvim = {
+      url = "github:stevearc/dressing.nvim";
+      flake = false;
+    };
+
+    nvim-cmp = {
+      url = "github:hrsh7th/nvim-cmp";
+      flake = false;
+    };
+
+    friendly-snippets-vim = {
+      url = "github:rafamadriz/friendly-snippets";
+      flake = false;
+    };
 
 
   };
@@ -64,7 +78,10 @@
             heirline-nvim
             lsp_lines-nvim
             null-ls-nvim
-            sqls-nvim;
+            dressing-nvim
+            nvim-cmp
+            sqls-nvim
+            friendly-snippets-vim;
         };
       };
 
@@ -138,7 +155,16 @@
                   }))
                 pnames);
         in
-        mkVimPlugins [ "heirline-nvim" "filetype-nvim" "lsp_lines-nvim" "null-ls-nvim" "sqls-nvim" ];
+        mkVimPlugins [ 
+                       "heirline-nvim" 
+                       "filetype-nvim" 
+                       "lsp_lines-nvim" 
+                       "null-ls-nvim" 
+                       "sqls-nvim" 
+                       "dressing-nvim"
+                       "nvim-cmp"
+                       "friendly-snippets-vim"
+                     ];
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
       wsl2ubuntug49771 = (wsl2UbuntuSystemFor "g49771").activationPackage;
       defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;
