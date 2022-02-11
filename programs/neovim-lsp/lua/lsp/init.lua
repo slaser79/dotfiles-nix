@@ -36,7 +36,7 @@ local shared_config = {
 }
 
 local lspconfig = require('lspconfig')
-local servers = { 'sumneko_lua', 'rnix', 'ccls', 'texlab', 'bashls', 'pyright', 'sqls' }
+local servers = { 'sumneko_lua', 'rnix', 'ccls', 'texlab', 'bashls', 'pyright', 'sqls' , 'hls'}
 
 -- Apply server-specific config from lsp dir
 for _, server in ipairs(servers) do
