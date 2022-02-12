@@ -1,16 +1,25 @@
 {
   description = "NixOS configuration and home-manager configurations for mac and debian gnu/linux";
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/?rev=0432195a4b8d68faaa7d3d4b355260a3120aeeae";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    coc-sh-src = {
-      flake = false;
-      url = github:josa42/coc-sh;
-    };
     neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    #nix languag server
+    rnix-lsp = {
+      url = "github:nix-community/rnix-lsp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    #sql language server
+    sqls = {
+      url = "github:lighttiger2505/sqls";
+      flake = false;
+    };
+
+    # nvim latest plugins
     heirline-nvim = {
       url = "github:rebelot/heirline.nvim";
       flake = false;
@@ -19,11 +28,6 @@
       url = "github:nathom/filetype.nvim";
       flake = false;
     };
-    rnix-lsp = {
-      url = "github:nix-community/rnix-lsp";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     lsp_lines-nvim = {
       url = "git+https://git.sr.ht/~whynothugo/lsp_lines.nvim?ref=main";
       flake = false;
@@ -31,12 +35,6 @@
 
     null-ls-nvim = {
       url = "github:jose-elias-alvarez/null-ls.nvim";
-      flake = false;
-    };
-    #sql language server
-
-    sqls = {
-      url = "github:lighttiger2505/sqls";
       flake = false;
     };
 
@@ -60,9 +58,15 @@
       flake = false;
     };
 
+    lspkind-nvim = {
+      url = "github:onsails/lspkind-nvim";
+      flake = false;
+    };
 
-  };
-  outputs = { self, home-manager, nixpkgs, coc-sh-src, neovim-nightly-overlay, ... }@inputs:
+
+
+  }; 
+  outputs = { self, home-manager, nixpkgs,  neovim-nightly-overlay, ... }@inputs:
     let
       #pkgs = nixpkgs.legacyPackages.x86_64-linux;
       pkgs = import nixpkgs {
@@ -81,6 +85,7 @@
             dressing-nvim
             nvim-cmp
             sqls-nvim
+            lspkind-nvim
             friendly-snippets-vim;
         };
       };
@@ -163,6 +168,7 @@
                        "sqls-nvim" 
                        "dressing-nvim"
                        "nvim-cmp"
+                       "lspkind-nvim"
                        "friendly-snippets-vim"
                      ];
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;

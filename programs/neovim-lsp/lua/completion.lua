@@ -55,8 +55,9 @@ cmp.setup({
 		{ name = "luasnip" },
 	},
 	formatting = {
-		format = require("lspkind").cmp_format({
-			with_text = true,
+		format  = require("lspkind").cmp_format({
+			--with_text = true,
+      mode = 'symbol_text',
 			symbol_map = icons,
 			menu = {
 				buffer = "[Buffer]",

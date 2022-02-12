@@ -28,7 +28,8 @@ require('nvim-treesitter.configs').setup({
   playground = { enable = true },
 })
 
-require('indent_blankline').setup({
+-- indent blankline showing funning characters disabled for now 
+--[[require('indent_blankline').setup({
   show_trailing_blankline_indent = false,
   use_treesitter = true,
   show_current_context = true,
@@ -45,7 +46,7 @@ require('indent_blankline').setup({
     -- Lua
     'table', 'arguments'
   }
-})
+})]]
 -- Fixes cursorline ghosting with indent-blankline on empty lines
 vim.opt.colorcolumn = "9999999";
 
