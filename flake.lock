@@ -277,6 +277,22 @@
         "type": "github"
       }
     },
+    "onedark-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1641889912,
+        "narHash": "sha256-oPdKMAddGF2J2rUrKlHxQhvBT2DK00oXjhiWXX0SmVo=",
+        "owner": "navarasu",
+        "repo": "onedark.nvim",
+        "rev": "e5f6772b61b4aea429db1d8cc61b8a91f467611b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "navarasu",
+        "repo": "onedark.nvim",
+        "type": "github"
+      }
+    },
     "rnix-lsp": {
       "inputs": {
         "naersk": "naersk",
@@ -312,9 +328,11 @@
         "nixpkgs": "nixpkgs_2",
         "null-ls-nvim": "null-ls-nvim",
         "nvim-cmp": "nvim-cmp",
+        "onedark-nvim": "onedark-nvim",
         "rnix-lsp": "rnix-lsp",
         "sqls": "sqls",
-        "sqls-nvim": "sqls-nvim"
+        "sqls-nvim": "sqls-nvim",
+        "tokyonight-nvim": "tokyonight-nvim"
       }
     },
     "sqls": {
@@ -346,6 +364,22 @@
       "original": {
         "owner": "nanotee",
         "repo": "sqls.nvim",
+        "type": "github"
+      }
+    },
+    "tokyonight-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1640940199,
+        "narHash": "sha256-EUiuGaX//mqv8v+UWfOQwxvV6UaQq1ZjdlqOpQAE7+c=",
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
+        "rev": "8223c970677e4d88c9b6b6d81bda23daf11062bb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
         "type": "github"
       }
     },

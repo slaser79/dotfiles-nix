@@ -30,6 +30,7 @@
       telescope-nvim # Fuzzy finder
       gitsigns-nvim # Git integration
       null-ls-nvim # LSP for formatters and linting
+      onedark-nvim # One dark colorscheme (leverages tree-sitter)
     ] ++ builtins.map (plugin: { inherit plugin; optional = true; }) [
       # Load optional plugins with `:packadd`
       playground # tree-sitter playground

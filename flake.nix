@@ -63,6 +63,15 @@
       flake = false;
     };
 
+    onedark-nvim = {
+      url = "github:navarasu/onedark.nvim";
+      flake = false;
+    };
+
+    tokyonight-nvim = {
+      url = "github:folke/tokyonight.nvim";
+      flake = false;
+    };
 
 
   }; 
@@ -86,6 +95,8 @@
             nvim-cmp
             sqls-nvim
             lspkind-nvim
+            onedark-nvim
+            tokyonight-nvim
             friendly-snippets-vim;
         };
       };
@@ -169,6 +180,8 @@
                        "dressing-nvim"
                        "nvim-cmp"
                        "lspkind-nvim"
+                       "onedark-nvim"
+                       "tokyonight-nvim"
                        "friendly-snippets-vim"
                      ];
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;

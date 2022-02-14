@@ -29,6 +29,7 @@
       nvim-colorizer-lua # Colour code colorizer
       nvim-web-devicons # Coloured file icons
       nvim-lspconfig # LSP default configurations
+      onedark-vim #LSP Color theme using tree-sitter
       sqls-nvim
       plenary-nvim # Telescope-nvim dependency
       telescope-fzf-native-nvim # FZF sorter for telescope
@@ -44,6 +45,7 @@
       nerdcommenter
       palenight-vim
       papercolor-theme
+      tokyonight-nvim #Color theme optimized for tree-sitter
       vim-surround
       vim-nix
       vim-markdown
@@ -59,6 +61,7 @@
       nixfmt # Nix code formatter
       nodePackages.bash-language-server
       nodePackages.pyright # Python LSP
+      nodePackages.typescript-language-server # Python LSP
       rnix-lsp # Nix LSP
       statix # Nix code linter
       stylua # Lua code formatter

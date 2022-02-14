@@ -17,14 +17,17 @@ vim.api.nvim_set_keymap('i', '<C-d>', "<ESC>diwi", { silent = true, noremap = tr
 require('gitsigns').setup({})
 require('lightspeed').setup({})
 
-vim.cmd[[colorscheme dracula]]
+--colorscheme setup
+vim.cmd[[colorscheme tokyonight]]
+
+
 
 require('nvim-web-devicons').setup({})
 
 require('nvim-treesitter.configs').setup({
   highlight = { enable = true },
   indent = { enable = true, disable = { "python" } },
-  incremental_selection = { enable = false },
+  incremental_selection = { enable = true },
   playground = { enable = true },
 })
 
@@ -48,7 +51,7 @@ require('nvim-treesitter.configs').setup({
   }
 })]]
 -- Fixes cursorline ghosting with indent-blankline on empty lines
-vim.opt.colorcolumn = "9999999";
+--vim.opt.colorcolumn = "9999999";
 
 require('colorizer').setup({
     '*', 'nix', 'html', 'javascript',
