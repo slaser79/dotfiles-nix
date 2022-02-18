@@ -4,10 +4,10 @@ local map_opts = { noremap = true, silent = true }
 local icons = require('lsp.icons')
 local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 local completion_capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_capabilities)
-vim.api.nvim_set_keymap('n','<leader>da','<cmd>lua vim.diagnostic.open_float()<CR>',map_opts)
 vim.api.nvim_set_keymap('n',']g','<cmd>lua vim.diagnostic.goto_next()<CR>',map_opts)
 vim.api.nvim_set_keymap('n','[g','<cmd>lua vim.diagnostic.goto_prev()<CR>',map_opts)
-vim.api.nvim_set_keymap('n','<leader>q','<cmd>lua vim.diagnostic.setloclist()<CR>',map_opts)
+vim.api.nvim_set_keymap('n','<leader>da','<cmd>lua vim.diagnostic.setqflist()<CR>',map_opts)
+vim.api.nvim_set_keymap('n','<leader>db','<cmd>lua vim.diagnostic.setloclist()<CR>',map_opts)
 
 -- Set up LSP configurations
 local shared_config = {
