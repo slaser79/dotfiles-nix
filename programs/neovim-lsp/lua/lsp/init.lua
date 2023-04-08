@@ -3,7 +3,7 @@ require('lsp.null_ls')
 local map_opts = { noremap = true, silent = true }
 local icons = require('lsp.icons')
 local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
-local completion_capabilities = require('cmp_nvim_lsp').update_capabilities(lsp_capabilities)
+local completion_capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.api.nvim_set_keymap('n',']g','<cmd>lua vim.diagnostic.goto_next()<CR>',map_opts)
 vim.api.nvim_set_keymap('n','[g','<cmd>lua vim.diagnostic.goto_prev()<CR>',map_opts)
 vim.api.nvim_set_keymap('n','<leader>da','<cmd>lua vim.diagnostic.setqflist()<CR>',map_opts)
@@ -36,7 +36,7 @@ local shared_config = {
 }
 
 local lspconfig = require('lspconfig')
-local servers = { 'sumneko_lua', 'rnix', 'ccls', 'texlab', 'bashls', 'pyright', 'sqls' , 'hls','tsserver'}
+local servers = { 'lua_ls', 'rnix', 'ccls', 'texlab', 'bashls', 'pyright', 'sqls' , 'hls','tsserver'}
 
 -- Apply server-specific config from lsp dir
 for _, server in ipairs(servers) do
@@ -57,7 +57,7 @@ for _, server in ipairs(servers) do
 end
 
 -- Show LSP diagnostics in virtual lines
-require('lsp_lines').register_lsp_virtual_lines()
+require('lsp_lines').setup()
 vim.diagnostic.config({
   virtual_lines = false,
   virtual_text = true,

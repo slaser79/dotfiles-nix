@@ -33,7 +33,8 @@
       jq
       #caddy
       #elixir_ls
-      #nodePackages.javascript-typescript-langserver
+      nodePackages.javascript-typescript-langserver
+      nodePackages.pnpm
       #nodePackages.uglify-js
       # previously in my nix-env
       nix-diff

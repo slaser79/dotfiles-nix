@@ -1,7 +1,6 @@
 require('options')
 require('filetype')
 
-require('statusline')
 require('picker')
 require('completion')
 require('lsp')
@@ -18,8 +17,8 @@ require('gitsigns').setup({})
 require('lightspeed').setup({})
 
 --colorscheme setup
-vim.cmd[[colorscheme tokyonight]]
-
+vim.cmd[[colorscheme kanagawa]]
+require('statusline')
 
 
 require('nvim-web-devicons').setup({})
@@ -61,20 +60,8 @@ vim.cmd [[
 -- Fixes cursorline ghosting with indent-blankline on empty lines
 --vim.opt.colorcolumn = "9999999";
 
-require('colorizer').setup({
-    '*', 'nix', 'html', 'javascript',
-    css = {
-      css = true
-    }
-  }, { 
-    mode = 'background',
-    RGB = false,
-    RRGGBB = true,
-    RRGGBBAA = true,
-    names = false,
-    css = false
-  }
-)
+--#region
+require('colorizer').setup({})
 
 require('dressing').setup({
     select = {

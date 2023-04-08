@@ -1,6 +1,6 @@
 local conditions = require('heirline.conditions')
 local utils = require('heirline.utils')
-local colours = require('kanagawa.colors').setup()
+local colours = require('kanagawa.colors').setup({theme = light})
 local statusline_colours = {
   modules = {
     fg = colours.fujiWhite, bg = colours.sumiInk1

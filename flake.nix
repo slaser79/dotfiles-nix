@@ -78,12 +78,13 @@
   outputs = { self, home-manager, nixpkgs,  neovim-nightly-overlay, ... }@inputs:
     let
       #pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      system = "x86_64-linux";
       pkgs = import nixpkgs {
-        system = "x86_64-linux";
+        inherit system;
         config = { allowUnfree = true; };
       };
 
-      defaultUser = "shingi79";
+      defaultUser = "slaser79";
       vimPluginsOverlay = final: prev: {
         vimPlugins = prev.vimPlugins // {
           inherit (self.packages.${prev.system})
@@ -137,21 +138,28 @@
       };
 
       overlays = [
-        neovim-nightly-overlay.overlay
+        #neovim-nightly-overlay.overlay
         vimPluginsOverlay
         sqls-overlay
       ];
 
       homeManagerConfFor = config: { ... }: {
-        nixpkgs.overlays = overlays;
         imports = [ config ];
       };
       wsl2UbuntuSystemFor = user: home-manager.lib.homeManagerConfiguration {
-        configuration = homeManagerConfFor ./hosts/xps-wsl2-ubuntu/home.nix;
-        system = "x86_64-linux";
-        homeDirectory = "/home/${user}";
-        username = "${user}";
-        stateVersion = "21.05";
+	pkgs = nixpkgs.legacyPackages.${system};
+        modules = [ 
+			 (homeManagerConfFor ./hosts/sflaptop-wsl2-ubuntu/home.nix)
+			 {
+				 nixpkgs.overlays = overlays;
+				 home = {
+					username = "${user}";
+					homeDirectory = "/home/${user}";
+					stateVersion = "21.05";
+				 };
+			 }
+		];
+
       };
       defaultWslUbuntu = wsl2UbuntuSystemFor defaultUser;
     in
@@ -187,5 +195,6 @@
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
       wsl2ubuntug49771 = (wsl2UbuntuSystemFor "g49771").activationPackage;
       defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;
+      homeConfigurations.${defaultUser} = defaultWslUbuntu;
     };
 }
