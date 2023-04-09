@@ -55,7 +55,7 @@ program-specific configuration live under
     -   Linux and macOS
 
         ``` {.shell}
-        $ nix build && sudo ./result/activate && rm ./result
+        $ home-manager switch --flake . 
         ```
     -   NixOS (Not implementated)
 

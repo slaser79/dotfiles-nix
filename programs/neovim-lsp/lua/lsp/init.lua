@@ -2,7 +2,6 @@ require('lsp.null_ls')
 
 local map_opts = { noremap = true, silent = true }
 local icons = require('lsp.icons')
-local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 local completion_capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.api.nvim_set_keymap('n',']g','<cmd>lua vim.diagnostic.goto_next()<CR>',map_opts)
 vim.api.nvim_set_keymap('n','[g','<cmd>lua vim.diagnostic.goto_prev()<CR>',map_opts)
@@ -18,12 +17,12 @@ local shared_config = {
     map('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', map_opts)
     map('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', map_opts)
     map('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', map_opts)
-    map('n', '<leader>kk>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', map_opts) -- clashes with line move up and down
+    map('n', '<leader>kk', '<cmd>lua vim.lsp.buf.signature_help()<CR>', map_opts) -- clashes with line move up and down
     map('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', map_opts)
     map('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', map_opts)
     map('n', '<leader>aa', '<cmd>lua vim.lsp.buf.code_action()<CR>', map_opts)
     map('n', '<leader>R', '<cmd>lua vim.lsp.buf.references()<CR>', map_opts)
-    map('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', map_opts)
+    map('n', '<leader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', map_opts)
 
 
     for i, kind in ipairs(vim.lsp.protocol.CompletionItemKind) do
@@ -36,7 +35,7 @@ local shared_config = {
 }
 
 local lspconfig = require('lspconfig')
-local servers = { 'lua_ls', 'rnix', 'ccls', 'texlab', 'bashls', 'pyright', 'sqls' , 'hls','tsserver'}
+local servers = { 'lua_ls', 'rnix', 'ccls', 'texlab', 'bashls', 'pyright', 'sqls' , 'hls','tsserver','tailwindcss'}
 
 -- Apply server-specific config from lsp dir
 for _, server in ipairs(servers) do

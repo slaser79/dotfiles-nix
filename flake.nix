@@ -73,6 +73,21 @@
       flake = false;
     };
 
+    copilot-cmp = {
+      url = "github:zbirenbaum/copilot-cmp";
+      flake = false;
+    };
+
+    copilot-lua = {
+      url = "github:zbirenbaum/copilot.lua";
+      flake = false;
+    };
+
+    chatgpt-nvim = {
+      url = "github:jackMort/ChatGPT.nvim";
+      flake = false;
+    };
+
 
   }; 
   outputs = { self, home-manager, nixpkgs,  neovim-nightly-overlay, ... }@inputs:
@@ -98,7 +113,8 @@
             lspkind-nvim
             onedark-nvim
             tokyonight-nvim
-            friendly-snippets-vim;
+            friendly-snippets-vim
+            chatgpt-nvim;
         };
       };
 
@@ -191,6 +207,9 @@
                        "onedark-nvim"
                        "tokyonight-nvim"
                        "friendly-snippets-vim"
+                       "copilot-cmp"
+                       "copilot-lua"
+                       "chatgpt-nvim"
                      ];
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
       wsl2ubuntug49771 = (wsl2UbuntuSystemFor "g49771").activationPackage;

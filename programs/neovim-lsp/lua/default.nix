@@ -1,6 +1,8 @@
+*** This file does not seem to be used and need to delete
 { config, pkgs, ... }:
 
 {
+  fadsfdsfadfajdfdf
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [

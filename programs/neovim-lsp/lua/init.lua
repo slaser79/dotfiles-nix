@@ -24,9 +24,18 @@ require('statusline')
 require('nvim-web-devicons').setup({})
 
 require('nvim-treesitter.configs').setup({
+  --ensure_installed = {"c", "lua", "vim", "vimdoc", "query"},
+  --sync_install = false,
   highlight = { enable = true },
   indent = { enable = true, disable = { "python" } },
-  incremental_selection = { enable = true },
+  incremental_selection = { enable = true ,
+    keymaps = {
+      init_selection    = "gnn",
+      node_incremental  = "grn",
+      scope_incremental = "grc",
+      node_decremental  = "grm",
+    },
+  },
   playground = { enable = true },
 })
 
@@ -80,3 +89,72 @@ require('dressing').setup({
     }
 })
 
+--#Copilot setup
+require("copilot").setup({
+   panel = {
+    enabled = true,
+    auto_refresh = true,
+    keymap = {
+      jump_prev = "[[",
+      jump_next = "]]",
+      accept = "<CR>",
+      refresh = "gr",
+      open = "<M-p>"
+    },
+    layout = {
+      position = "bottom", -- | top | left | right
+      ratio = 0.4
+    },
+  },
+  suggestion = {
+    enabled = true,
+    auto_trigger = true,
+    debounce = 75,
+    keymap = {
+      accept = "<M-l>",
+      accept_word = false,
+      accept_line = false,
+      next = "<M-]>",
+      prev = "<M-[>",
+      dismiss = "<C-]>",
+    },
+  },
+  filetypes = {
+    yaml = false,
+    markdown = false,
+    help = false,
+    gitcommit = false,
+    gitrebase = false,
+    hgcommit = false,
+    svn = false,
+    cvs = false,
+    ["."] = false,
+  },
+  copilot_node_command = 'node', -- Node.js version must be > 16.x
+  server_opts_overrides = {},
+
+})
+--chatgpt setup
+require("chatgpt").setup({
+  keymaps = {
+    close = { "<C-e>", "<Esc>" },
+    submit = "<C-t>",
+    yank_last = "<C-y>",
+    yank_last_code = "<C-k>",
+    scroll_up = "<C-u>",
+    scroll_down = "<C-d>",
+    toggle_settings = "<C-o>",
+    new_session = "<C-n>",
+    cycle_windows = "<Tab>",
+    -- in the Sessions pane
+    select_session = "<Space>",
+    rename_session = "r",
+    delete_session = "d",
+  },
+})
+
+
+vim.api.nvim_set_keymap('n', '<leader>ce', "<cmd>ChatGPTEditWithInstructions<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>ce', "<cmd>ChatGPTEditWithInstructions<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>cg', "<cmd>ChatGPT<cr>", { silent = true, noremap = true })
+vim.api.nvim_set_keymap('v', '<leader>cg', "<cmd>ChatGPTEditWithInstructions<cr>", { silent = true, noremap = true })

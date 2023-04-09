@@ -5,8 +5,14 @@
     enable = true;
     vimAlias = true;
     plugins = with pkgs.vimPlugins; [
-      (nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars)) # tree-sitter code AST
+      #(nvim-treesitter.withPlugins (_: pkgs.tree-sitter.allGrammars)) # tree-sitter code AST
+      nvim-treesitter.withAllGrammars
       nvim-treesitter-textobjects
+      nvim-treesitter-context
+      #copilot-vim #github copilot
+      copilot-lua #github copilot
+      chatgpt-nvim #chatgpt
+      copilot-cmp #github copilot
       cmp-buffer # nvim-cmp completion buffer source
       cmp-cmdline # nvim-cmp commands completion source
       cmp-nvim-lsp # nvim-cmp completion LSP source
@@ -25,10 +31,12 @@
       lsp_lines-nvim # Virtual line LSP diagnostics
       lspkind-nvim # Completion item kind symbols
       luasnip # Completion snippets engine
+      nui-nvim # UI components for chatgpt-nvim
       nvim-cmp # Completion
       nvim-colorizer-lua # Colour code colorizer
       nvim-web-devicons # Coloured file icons
       nvim-lspconfig # LSP default configurations
+
       onedark-vim #LSP Color theme using tree-sitter
       sqls-nvim
       plenary-nvim # Telescope-nvim dependency
@@ -62,6 +70,8 @@
       nodePackages.bash-language-server
       nodePackages.pyright # Python LSP
       nodePackages.typescript-language-server # Python LSP
+      nodePackages."@tailwindcss/language-server" # tailwindcss plugin 
+      nodePackages.vscode-langservers-extracted #lsp servers for json, html, css
       rnix-lsp # Nix LSP
       statix # Nix code linter
       stylua # Lua code formatter
