@@ -1,5 +1,6 @@
 {
-  description = "NixOS configuration and home-manager configurations for mac and debian gnu/linux";
+  description =
+    "NixOS configuration and home-manager configurations for mac and debian gnu/linux";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
@@ -88,9 +89,8 @@
       flake = false;
     };
 
-
-  }; 
-  outputs = { self, home-manager, nixpkgs,  neovim-nightly-overlay, ... }@inputs:
+  };
+  outputs = { self, home-manager, nixpkgs, neovim-nightly-overlay, ... }@inputs:
     let
       #pkgs = nixpkgs.legacyPackages.x86_64-linux;
       system = "x86_64-linux";
@@ -103,54 +103,51 @@
       vimPluginsOverlay = final: prev: {
         vimPlugins = prev.vimPlugins // {
           inherit (self.packages.${prev.system})
-            filetype-nvim
-            heirline-nvim
-            lsp_lines-nvim
-            null-ls-nvim
-            dressing-nvim
-            nvim-cmp
-            sqls-nvim
-            lspkind-nvim
-            onedark-nvim
-            tokyonight-nvim
-            friendly-snippets-vim
-            chatgpt-nvim;
+            filetype-nvim heirline-nvim lsp_lines-nvim null-ls-nvim
+            dressing-nvim nvim-cmp sqls-nvim lspkind-nvim onedark-nvim
+            tokyonight-nvim friendly-snippets-vim chatgpt-nvim;
         };
       };
 
       sqls-overlay = _: prev: {
-        sqls = prev.buildGoModule
-          rec {
-            pname = "sqls";
-            version = "0.2.22";
+        sqls = prev.buildGoModule rec {
+          pname = "sqls";
+          version = "0.2.22";
 
-            doCheck = false;
-            src = inputs.sqls;
-            buildinputs = with pkgs; [ oracle-instantclient odpic];
-            nativeBuildInputs = with pkgs; [ makeWrapper];
+          doCheck = false;
+          src = inputs.sqls;
+          buildinputs = with pkgs; [ oracle-instantclient odpic ];
+          nativeBuildInputs = with pkgs; [ makeWrapper ];
 
-            overrideModAttrs = oldAttrs: {
-              impureEnvVars = oldAttrs.impureEnvVars ++ [ "HTTPS_PROXY" ];
-            };
-            vendorSha256 = "sha256-sowzyhvNr7Ek3ex4BP415HhHSKnqPHy5EbnECDVZOGw=";
-
-            ldflags = [ "-s" "-w" "-X main.version=${version}" "-X main.revision=${src.rev}" ];
-
-            meta = with pkgs.lib; {
-              homepage = "https://github.com/lighttiger2505/sqls";
-              description = "SQL language server written in Go";
-              license = licenses.mit;
-              maintainers = [ maintainers.marsam ];
-            };
-
-            postInstall = ''
-              if [ -f $out/bin/sqls ]; then
-                wrapProgram $out/bin/sqls\
-                  --set LD_LIBRARY_PATH ${pkgs.lib.makeLibraryPath [ pkgs.oracle-instantclient.lib ]}
-              fi
-            '';
-
+          overrideModAttrs = oldAttrs: {
+            impureEnvVars = oldAttrs.impureEnvVars ++ [ "HTTPS_PROXY" ];
           };
+          vendorSha256 = "sha256-sowzyhvNr7Ek3ex4BP415HhHSKnqPHy5EbnECDVZOGw=";
+
+          ldflags = [
+            "-s"
+            "-w"
+            "-X main.version=${version}"
+            "-X main.revision=${src.rev}"
+          ];
+
+          meta = with pkgs.lib; {
+            homepage = "https://github.com/lighttiger2505/sqls";
+            description = "SQL language server written in Go";
+            license = licenses.mit;
+            maintainers = [ maintainers.marsam ];
+          };
+
+          postInstall = ''
+            if [ -f $out/bin/sqls ]; then
+              wrapProgram $out/bin/sqls\
+                --set LD_LIBRARY_PATH ${
+                  pkgs.lib.makeLibraryPath [ pkgs.oracle-instantclient.lib ]
+                }
+            fi
+          '';
+
+        };
       };
 
       overlays = [
@@ -159,24 +156,23 @@
         sqls-overlay
       ];
 
-      homeManagerConfFor = config: { ... }: {
-        imports = [ config ];
-      };
-      wsl2UbuntuSystemFor = user: home-manager.lib.homeManagerConfiguration {
-	pkgs = nixpkgs.legacyPackages.${system};
-        modules = [ 
-			 (homeManagerConfFor ./hosts/sflaptop-wsl2-ubuntu/home.nix)
-			 {
-				 nixpkgs.overlays = overlays;
-				 home = {
-					username = "${user}";
-					homeDirectory = "/home/${user}";
-					stateVersion = "21.05";
-				 };
-			 }
-		];
+      homeManagerConfFor = config: { ... }: { imports = [ config ]; };
+      wsl2UbuntuSystemFor = user:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          modules = [
+            (homeManagerConfFor ./hosts/sflaptop-wsl2-ubuntu/home.nix)
+            {
+              nixpkgs.overlays = overlays;
+              home = {
+                username = "${user}";
+                homeDirectory = "/home/${user}";
+                stateVersion = "21.05";
+              };
+            }
+          ];
 
-      };
+        };
       defaultWslUbuntu = wsl2UbuntuSystemFor defaultUser;
     in
     {
@@ -185,32 +181,31 @@
         let
           # This is required to create a proper derivation to reference in the overlay for nixpkgs 
           mkVimPlugins = pnames:
-            builtins.listToAttrs (
-              builtins.map
-                (pname: pkgs.lib.nameValuePair pname
-                  (pkgs.vimUtils.buildVimPluginFrom2Nix {
-                    inherit pname;
-                    src = inputs.${pname};
-                    version = inputs.${pname}.shortRev;
-                  }))
-                pnames);
+            builtins.listToAttrs (builtins.map
+              (pname:
+                pkgs.lib.nameValuePair pname (pkgs.vimUtils.buildVimPluginFrom2Nix {
+                  inherit pname;
+                  src = inputs.${pname};
+                  version = inputs.${pname}.shortRev;
+                }))
+              pnames);
         in
-        mkVimPlugins [ 
-                       "heirline-nvim" 
-                       "filetype-nvim" 
-                       "lsp_lines-nvim" 
-                       "null-ls-nvim" 
-                       "sqls-nvim" 
-                       "dressing-nvim"
-                       "nvim-cmp"
-                       "lspkind-nvim"
-                       "onedark-nvim"
-                       "tokyonight-nvim"
-                       "friendly-snippets-vim"
-                       "copilot-cmp"
-                       "copilot-lua"
-                       "chatgpt-nvim"
-                     ];
+        mkVimPlugins [
+          "heirline-nvim"
+          "filetype-nvim"
+          "lsp_lines-nvim"
+          "null-ls-nvim"
+          "sqls-nvim"
+          "dressing-nvim"
+          "nvim-cmp"
+          "lspkind-nvim"
+          "onedark-nvim"
+          "tokyonight-nvim"
+          "friendly-snippets-vim"
+          "copilot-cmp"
+          "copilot-lua"
+          "chatgpt-nvim"
+        ];
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
       wsl2ubuntug49771 = (wsl2UbuntuSystemFor "g49771").activationPackage;
       defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;

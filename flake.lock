@@ -3,11 +3,11 @@
     "chatgpt-nvim": {
       "flake": false,
       "locked": {
-        "lastModified": 1680803059,
-        "narHash": "sha256-vn6FaqlEmiBsSuq+OKGHLj5W9TVNrO6bR1EMHM9Pykk=",
+        "lastModified": 1681505716,
+        "narHash": "sha256-KqnPzkdZnFKcUwkgKr/YxTa7BimJkdI62Bf6WzepuJQ=",
         "owner": "jackMort",
         "repo": "ChatGPT.nvim",
-        "rev": "3ea19ba666e226ac33c8e00c7bf99e81931d7c86",
+        "rev": "b5f35e479c23f0d67ddd62958bee224081d10798",
         "type": "github"
       },
       "original": {

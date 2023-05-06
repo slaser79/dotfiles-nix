@@ -57,6 +57,7 @@
       vim-surround
       vim-nix
       vim-markdown
+      which-key-nvim # Keybinding popup
     ] ++ builtins.map (plugin: { inherit plugin; optional = true; }) [
       # Load optional plugins with `:packadd`
       playground # tree-sitter playground
