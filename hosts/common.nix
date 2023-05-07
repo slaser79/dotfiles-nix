@@ -2,9 +2,11 @@
 {
   imports =
     [
+      ../programs/base.nix
       ../programs/zsh/zsh.nix
       ../programs/neovim-lsp
       ../programs/git.nix
+      ../programs/docker.nix
     ];
 
   home = {
@@ -18,6 +20,7 @@
       #mypy
       #pandoc
       #pyright
+      fd #alternative to find
       ripgrep
       #sqlite
       #stack
@@ -70,6 +73,8 @@
     enable = true;
     config.theme = "ansi-dark";
   };
+
+  modules.docker.enable = true;
 
 
   home.file.".ipython/profile_default/ipython_config.py".text = ''

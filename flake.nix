@@ -25,10 +25,6 @@
       url = "github:rebelot/heirline.nvim";
       flake = false;
     };
-    filetype-nvim = {
-      url = "github:nathom/filetype.nvim";
-      flake = false;
-    };
     lsp_lines-nvim = {
       url = "git+https://git.sr.ht/~whynothugo/lsp_lines.nvim?ref=main";
       flake = false;
@@ -103,7 +99,7 @@
       vimPluginsOverlay = final: prev: {
         vimPlugins = prev.vimPlugins // {
           inherit (self.packages.${prev.system})
-            filetype-nvim heirline-nvim lsp_lines-nvim null-ls-nvim
+            heirline-nvim lsp_lines-nvim null-ls-nvim
             dressing-nvim nvim-cmp sqls-nvim lspkind-nvim onedark-nvim
             tokyonight-nvim friendly-snippets-vim chatgpt-nvim;
         };
@@ -192,7 +188,6 @@
         in
         mkVimPlugins [
           "heirline-nvim"
-          "filetype-nvim"
           "lsp_lines-nvim"
           "null-ls-nvim"
           "sqls-nvim"

@@ -1,5 +1,5 @@
 require('options')
-require('filetype')
+
 
 require('picker')
 require('completion')

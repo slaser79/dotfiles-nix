@@ -22,7 +22,6 @@
       cmp_luasnip # nvim-cmp completion Luasnip snippets source
       dressing-nvim # Update vim.ui interfaces 
       editorconfig-nvim # `.editorconfig` code style support
-      filetype-nvim # filetype.vim replacement
       friendly-snippets-vim #for vscode like snippets
       heirline-nvim # Statusline
       indent-blankline-nvim # Indentation highlighting
