@@ -44,6 +44,7 @@
       nix-index
       nix-prefetch-git
       nixos-shell
+      nixos-rebuild
       pcre-cpp
       binutils
       cabal2nix

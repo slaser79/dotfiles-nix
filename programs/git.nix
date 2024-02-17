@@ -2,8 +2,8 @@
 {
   programs.git = {
     enable = true;
-    userName = "Shingi Mureriwa";
-    userEmail = "shingi79@hotmail.com";
+    userName = "slaser79";
+    userEmail = "slaser79@hotmail.com";
     aliases = {
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit";
     };
