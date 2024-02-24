@@ -37,7 +37,7 @@
       nvim-lspconfig # LSP default configurations
 
       onedark-vim #LSP Color theme using tree-sitter
-      sqls-nvim
+      #sqls-nvim
       plenary-nvim # Telescope-nvim dependency
       telescope-fzf-native-nvim # FZF sorter for telescope
       telescope-nvim # Fuzzy finder
@@ -81,8 +81,8 @@
       texlab # LaTeX LSP
       tree-sitter # Incremental parser
       valgrind # Memory debugging
-      python39Packages.flake8 # Python linter
-      python39Packages.black # Python code formatter
+      python3Packages.flake8 # Python linter
+      python3Packages.black # Python code formatter
     ];
     extraConfig = ''
       "vim settings

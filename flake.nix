@@ -14,11 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #sql language server
-    sqls = {
-      url = "github:lighttiger2505/sqls";
-      flake = false;
-    };
+    ##sql language server
+    #sqls = {
+      #url = "github:lighttiger2505/sqls";
+      #flake = false;
+    #};
 
     # nvim latest plugins
     heirline-nvim = {
@@ -35,10 +35,10 @@
       flake = false;
     };
 
-    sqls-nvim = {
-      url = "github:nanotee/sqls.nvim";
-      flake = false;
-    };
+    #sqls-nvim = {
+      #url = "github:nanotee/sqls.nvim";
+      #flake = false;
+    #};
 
     dressing-nvim = {
       url = "github:stevearc/dressing.nvim";
@@ -99,57 +99,57 @@
       vimPluginsOverlay = final: prev: {
         vimPlugins = prev.vimPlugins // {
           inherit (self.packages.${prev.system})
-            heirline-nvim lsp_lines-nvim null-ls-nvim
-            dressing-nvim nvim-cmp sqls-nvim lspkind-nvim onedark-nvim
-            tokyonight-nvim friendly-snippets-vim chatgpt-nvim;
+            heirline-nvim lsp_lines-nvim null-ls-nvim dressing-nvim nvim-cmp
+            lspkind-nvim onedark-nvim tokyonight-nvim
+            friendly-snippets-vim chatgpt-nvim;
         };
       };
 
-      sqls-overlay = _: prev: {
-        sqls = prev.buildGoModule rec {
-          pname = "sqls";
-          version = "0.2.22";
+      #sqls-overlay = _: prev: {
+        #sqls = prev.buildGoModule rec {
+          #pname = "sqls";
+          #version = "0.2.22";
 
-          doCheck = false;
-          src = inputs.sqls;
-          buildinputs = with pkgs; [ oracle-instantclient odpic ];
-          nativeBuildInputs = with pkgs; [ makeWrapper ];
+          #doCheck = false;
+          #src = inputs.sqls;
+          #buildinputs = with pkgs; [ oracle-instantclient odpic ];
+          #nativeBuildInputs = with pkgs; [ makeWrapper ];
 
-          overrideModAttrs = oldAttrs: {
-            impureEnvVars = oldAttrs.impureEnvVars ++ [ "HTTPS_PROXY" ];
-          };
-          vendorSha256 = "sha256-sowzyhvNr7Ek3ex4BP415HhHSKnqPHy5EbnECDVZOGw=";
+          #overrideModAttrs = oldAttrs: {
+            #impureEnvVars = oldAttrs.impureEnvVars ++ [ "HTTPS_PROXY" ];
+          #};
+          #vendorSha256 = "sha256-sowzyhvNr7Ek3ex4BP415HhHSKnqPHy5EbnECDVZOGw=";
 
-          ldflags = [
-            "-s"
-            "-w"
-            "-X main.version=${version}"
-            "-X main.revision=${src.rev}"
-          ];
+          #ldflags = [
+            #"-s"
+            #"-w"
+            #"-X main.version=${version}"
+            #"-X main.revision=${src.rev}"
+          #];
 
-          meta = with pkgs.lib; {
-            homepage = "https://github.com/lighttiger2505/sqls";
-            description = "SQL language server written in Go";
-            license = licenses.mit;
-            maintainers = [ maintainers.marsam ];
-          };
+          #meta = with pkgs.lib; {
+            #homepage = "https://github.com/lighttiger2505/sqls";
+            #description = "SQL language server written in Go";
+            #license = licenses.mit;
+            #maintainers = [ maintainers.marsam ];
+          #};
 
-          postInstall = ''
-            if [ -f $out/bin/sqls ]; then
-              wrapProgram $out/bin/sqls\
-                --set LD_LIBRARY_PATH ${
-                  pkgs.lib.makeLibraryPath [ pkgs.oracle-instantclient.lib ]
-                }
-            fi
-          '';
+          #postInstall = ''
+            #if [ -f $out/bin/sqls ]; then
+              #wrapProgram $out/bin/sqls\
+                #--set LD_LIBRARY_PATH ${
+                  #pkgs.lib.makeLibraryPath [ pkgs.oracle-instantclient.lib ]
+                #}
+            #fi
+          #'';
 
-        };
-      };
+        #};
+      #};
 
       overlays = [
         #neovim-nightly-overlay.overlay
         vimPluginsOverlay
-        sqls-overlay
+        #sqls-overlay
       ];
 
       homeManagerConfFor = config: { ... }: { imports = [ config ]; };
@@ -190,7 +190,7 @@
           "heirline-nvim"
           "lsp_lines-nvim"
           "null-ls-nvim"
-          "sqls-nvim"
+          #"sqls-nvim"
           "dressing-nvim"
           "nvim-cmp"
           "lspkind-nvim"
