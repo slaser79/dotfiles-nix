@@ -2,6 +2,7 @@
 
 with lib;
 {
+  config.nix.package = pkgs.nixVersions.latest;
   options.globals = {
     isWsl      = mkOption { type = types.bool; default = builtins.getEnv "WSL_DISTRO_NAME" != ""; };
     WslDistro  = mkOption { type = types.str; default = "Alpine"; };

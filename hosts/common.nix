@@ -38,14 +38,7 @@
       #elixir_ls
       nodePackages.javascript-typescript-langserver
       nodePackages.pnpm
-      #nodePackages.uglify-js
-      # previously in my nix-env
-      nix-diff
-      nix-index
-      nix-prefetch-git
-      nixos-shell
-      nixos-rebuild
-      pcre-cpp
+      #nodePackages.uglifyp
       binutils
       cabal2nix
       cachix
@@ -65,6 +58,7 @@
       python3
       shellcheck
       sqlite
+      # ssmtp
     ];
   };
 

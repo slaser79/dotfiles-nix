@@ -179,7 +179,7 @@
           mkVimPlugins = pnames:
             builtins.listToAttrs (builtins.map
               (pname:
-                pkgs.lib.nameValuePair pname (pkgs.vimUtils.buildVimPluginFrom2Nix {
+                pkgs.lib.nameValuePair pname (pkgs.vimUtils.buildVimPlugin {
                   inherit pname;
                   src = inputs.${pname};
                   version = inputs.${pname}.shortRev;

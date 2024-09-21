@@ -68,11 +68,12 @@
       fd # Telescope finder
       nixfmt # Nix code formatter
       nodePackages.bash-language-server
-      nodePackages.pyright # Python LSP
+      pyright # Python LSP
       nodePackages.typescript-language-server # Python LSP
       nodePackages."@tailwindcss/language-server" # tailwindcss plugin 
       nodePackages.vscode-langservers-extracted #lsp servers for json, html, css
-      rnix-lsp # Nix LSP
+      # rnix-lsp # Nix LSP No longer maintained
+      nil
       statix # Nix code linter
       stylua # Lua code formatter
       sqls #sql language-server
