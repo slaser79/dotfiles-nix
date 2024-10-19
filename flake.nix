@@ -85,6 +85,21 @@
       flake = false;
     };
 
+    wezterm-nvim = {
+      url = "github:willothy/wezterm.nvim";
+      flake = false;
+    };
+
+    git-worktree-nvim = {
+      url = "github:polarmutex/git-worktree.nvim";
+      flake = false;
+    };
+
+    flutter-tools-nvim = {
+      url = "github:nvim-flutter/flutter-tools.nvim";
+      flake = false;
+    };
+
   };
   outputs = { self, home-manager, nixpkgs, neovim-nightly-overlay, ... }@inputs:
     let
@@ -101,50 +116,10 @@
           inherit (self.packages.${prev.system})
             heirline-nvim lsp_lines-nvim null-ls-nvim dressing-nvim nvim-cmp
             lspkind-nvim onedark-nvim tokyonight-nvim
-            friendly-snippets-vim chatgpt-nvim;
+          friendly-snippets-vim chatgpt-nvim wezterm-nvim git-worktree-nvim
+          flutter-tools-nvim;
         };
       };
-
-      #sqls-overlay = _: prev: {
-        #sqls = prev.buildGoModule rec {
-          #pname = "sqls";
-          #version = "0.2.22";
-
-          #doCheck = false;
-          #src = inputs.sqls;
-          #buildinputs = with pkgs; [ oracle-instantclient odpic ];
-          #nativeBuildInputs = with pkgs; [ makeWrapper ];
-
-          #overrideModAttrs = oldAttrs: {
-            #impureEnvVars = oldAttrs.impureEnvVars ++ [ "HTTPS_PROXY" ];
-          #};
-          #vendorSha256 = "sha256-sowzyhvNr7Ek3ex4BP415HhHSKnqPHy5EbnECDVZOGw=";
-
-          #ldflags = [
-            #"-s"
-            #"-w"
-            #"-X main.version=${version}"
-            #"-X main.revision=${src.rev}"
-          #];
-
-          #meta = with pkgs.lib; {
-            #homepage = "https://github.com/lighttiger2505/sqls";
-            #description = "SQL language server written in Go";
-            #license = licenses.mit;
-            #maintainers = [ maintainers.marsam ];
-          #};
-
-          #postInstall = ''
-            #if [ -f $out/bin/sqls ]; then
-              #wrapProgram $out/bin/sqls\
-                #--set LD_LIBRARY_PATH ${
-                  #pkgs.lib.makeLibraryPath [ pkgs.oracle-instantclient.lib ]
-                #}
-            #fi
-          #'';
-
-        #};
-      #};
 
       overlays = [
         #neovim-nightly-overlay.overlay
@@ -200,6 +175,9 @@
           "copilot-cmp"
           "copilot-lua"
           "chatgpt-nvim"
+          "wezterm-nvim"
+          "git-worktree-nvim"
+          "flutter-tools-nvim"
         ];
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
       wsl2ubuntug49771 = (wsl2UbuntuSystemFor "g49771").activationPackage;

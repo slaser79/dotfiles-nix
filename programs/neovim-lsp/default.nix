@@ -57,6 +57,10 @@
       vim-nix
       vim-markdown
       which-key-nvim # Keybinding popup
+      wezterm-nvim #Wezterm
+      harpoon2
+      git-worktree-nvim
+      flutter-tools-nvim
     ] ++ builtins.map (plugin: { inherit plugin; optional = true; }) [
       # Load optional plugins with `:packadd`
       playground # tree-sitter playground

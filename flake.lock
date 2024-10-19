@@ -138,6 +138,22 @@
         "type": "indirect"
       }
     },
+    "flutter-tools-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1728624414,
+        "narHash": "sha256-GS6k8J31rYBycVUqbVH3W+G1hnx727hL2OJnirCejvg=",
+        "owner": "nvim-flutter",
+        "repo": "flutter-tools.nvim",
+        "rev": "6bf887bb9442b80a67f36e7465a66de4202d8a3f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-flutter",
+        "repo": "flutter-tools.nvim",
+        "type": "github"
+      }
+    },
     "friendly-snippets-vim": {
       "flake": false,
       "locked": {
@@ -178,6 +194,22 @@
       "original": {
         "owner": "cachix",
         "repo": "git-hooks.nix",
+        "type": "github"
+      }
+    },
+    "git-worktree-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723000367,
+        "narHash": "sha256-db5z9j+HTPcOeBjnX8T7syLt4zNDvm45V0lXrD8q6oY=",
+        "owner": "polarmutex",
+        "repo": "git-worktree.nvim",
+        "rev": "500629d0ad916ec362f53ecf21f84f3ba445f73e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "polarmutex",
+        "repo": "git-worktree.nvim",
         "type": "github"
       }
     },
@@ -462,7 +494,9 @@
         "copilot-cmp": "copilot-cmp",
         "copilot-lua": "copilot-lua",
         "dressing-nvim": "dressing-nvim",
+        "flutter-tools-nvim": "flutter-tools-nvim",
         "friendly-snippets-vim": "friendly-snippets-vim",
+        "git-worktree-nvim": "git-worktree-nvim",
         "heirline-nvim": "heirline-nvim",
         "home-manager": "home-manager",
         "lsp_lines-nvim": "lsp_lines-nvim",
@@ -473,7 +507,8 @@
         "nvim-cmp": "nvim-cmp",
         "onedark-nvim": "onedark-nvim",
         "rnix-lsp": "rnix-lsp",
-        "tokyonight-nvim": "tokyonight-nvim"
+        "tokyonight-nvim": "tokyonight-nvim",
+        "wezterm-nvim": "wezterm-nvim"
       }
     },
     "tokyonight-nvim": {
@@ -504,6 +539,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "wezterm-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1727348906,
+        "narHash": "sha256-q4PZUh4QdppeKGB0hytnZi2WBE6FRTcgieka6AnqQ5k=",
+        "owner": "willothy",
+        "repo": "wezterm.nvim",
+        "rev": "032c33b621b96cc7228955b4352b48141c482098",
+        "type": "github"
+      },
+      "original": {
+        "owner": "willothy",
+        "repo": "wezterm.nvim",
         "type": "github"
       }
     }
