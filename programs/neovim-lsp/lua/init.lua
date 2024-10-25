@@ -118,21 +118,7 @@ vim.cmd([[
 --#region
 require("colorizer").setup({})
 
-require("dressing").setup({
-  select = {
-    get_config = function(opts)
-      if opts.kind == "codeaction" then
-        return {
-          backend = "builtin",
-          builtin = {
-            relative = "cursor",
-            max_width = 40,
-          },
-        }
-      end
-    end,
-  },
-})
+require("dressing").setup({})
 
 --#Copilot setup
 require("copilot").setup({
