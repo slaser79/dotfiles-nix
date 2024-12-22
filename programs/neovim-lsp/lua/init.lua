@@ -63,6 +63,10 @@ require('gitsigns').setup{
 require("lightspeed").setup({})
 
 --colorscheme setup
+require("tokyonight").setup({
+  transparent = true,
+  cache = true
+})
 vim.cmd([[colorscheme tokyonight]])
 require("statusline")
 
