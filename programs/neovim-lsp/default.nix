@@ -73,6 +73,7 @@
       nixfmt # Nix code formatter
       nodePackages.bash-language-server
       pyright # Python LSP
+      ruff # python ruff
       nodePackages.typescript-language-server # Python LSP
       nodePackages."@tailwindcss/language-server" # tailwindcss plugin 
       nodePackages.vscode-langservers-extracted #lsp servers for json, html, css
@@ -88,6 +89,7 @@
       valgrind # Memory debugging
       python3Packages.flake8 # Python linter
       python3Packages.black # Python code formatter
+
     ];
     extraConfig = ''
       "vim settings
