@@ -11,7 +11,7 @@
       nvim-treesitter-context
       #copilot-vim #github copilot
       copilot-lua #github copilot
-      chatgpt-nvim #chatgpt
+      ChatGPT-nvim #chatgpt nvim
       copilot-cmp #github copilot
       cmp-buffer # nvim-cmp completion buffer source
       cmp-cmdline # nvim-cmp commands completion source
@@ -22,7 +22,7 @@
       cmp_luasnip # nvim-cmp completion Luasnip snippets source
       dressing-nvim # Update vim.ui interfaces 
       editorconfig-nvim # `.editorconfig` code style support
-      friendly-snippets-vim #for vscode like snippets
+      friendly-snippets
       heirline-nvim # Statusline
       indent-blankline-nvim # Indentation highlighting
       kanagawa-nvim # Neovim theme
@@ -42,7 +42,7 @@
       telescope-fzf-native-nvim # FZF sorter for telescope
       telescope-nvim # Fuzzy finder
       gitsigns-nvim # Git integration
-      null-ls-nvim # LSP for formatters and linting
+      none-ls-nvim # LSP for formatters and linting
       #Extra from original vim config
       fugitive
       gruvbox
@@ -61,6 +61,9 @@
       harpoon2
       git-worktree-nvim
       flutter-tools-nvim
+      mini-files
+      shinEngine-nvim
+      markview-nvim
     ] ++ builtins.map (plugin: { inherit plugin; optional = true; }) [
       # Load optional plugins with `:packadd`
       playground # tree-sitter playground
@@ -70,10 +73,11 @@
       #clang-tools # C/C++ LSP and code formatter
       #cppcheck # C/C++ code linter
       fd # Telescope finder
-      nixfmt # Nix code formatter
+      nixfmt-rfc-style # Nix code formatter
       nodePackages.bash-language-server
       pyright # Python LSP
       ruff # python ruff
+      #ruff-lsp
       nodePackages.typescript-language-server # Python LSP
       nodePackages."@tailwindcss/language-server" # tailwindcss plugin 
       nodePackages.vscode-langservers-extracted #lsp servers for json, html, css
@@ -110,6 +114,9 @@
       inoremap <C-k> <Esc>:m .-2<CR>==gi
       vnoremap K :m '<-2<CR>gv=gv
       vnoremap J :m '>+1<CR>gv=gv
+
+      "settings for netrw
+      let g:netrw_liststyle = 3
 
       " Home-Manager and NixOS currently do not support a pure Lua config
       " without a generated init.vim containing the runtimepath and packpath,

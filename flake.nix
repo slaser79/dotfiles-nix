@@ -14,10 +14,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    shinEngine-nvim = {
+      url = "path:/home/slaser79/lab/shinEngine-nvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     ##sql language server
     #sqls = {
-      #url = "github:lighttiger2505/sqls";
-      #flake = false;
+    #url = "github:lighttiger2505/sqls";
+    #flake = false;
     #};
 
     # nvim latest plugins
@@ -30,14 +35,10 @@
       flake = false;
     };
 
-    null-ls-nvim = {
-      url = "github:jose-elias-alvarez/null-ls.nvim";
-      flake = false;
-    };
 
     #sqls-nvim = {
-      #url = "github:nanotee/sqls.nvim";
-      #flake = false;
+    #url = "github:nanotee/sqls.nvim";
+    #flake = false;
     #};
 
     dressing-nvim = {
@@ -45,15 +46,7 @@
       flake = false;
     };
 
-    nvim-cmp = {
-      url = "github:hrsh7th/nvim-cmp";
-      flake = false;
-    };
 
-    friendly-snippets-vim = {
-      url = "github:rafamadriz/friendly-snippets";
-      flake = false;
-    };
 
     lspkind-nvim = {
       url = "github:onsails/lspkind-nvim";
@@ -65,10 +58,6 @@
       flake = false;
     };
 
-    tokyonight-nvim = {
-      url = "github:folke/tokyonight.nvim";
-      flake = false;
-    };
 
     copilot-cmp = {
       url = "github:zbirenbaum/copilot-cmp";
@@ -80,28 +69,25 @@
       flake = false;
     };
 
-    chatgpt-nvim = {
-      url = "github:jackMort/ChatGPT.nvim";
-      flake = false;
-    };
-
     wezterm-nvim = {
       url = "github:willothy/wezterm.nvim";
       flake = false;
     };
 
-    git-worktree-nvim = {
-      url = "github:polarmutex/git-worktree.nvim";
-      flake = false;
-    };
 
-    flutter-tools-nvim = {
-      url = "github:nvim-flutter/flutter-tools.nvim";
+    #flutter-tools-nvim = {
+      #url = "github:nvim-flutter/flutter-tools.nvim";
+      #flake = false;
+    #};
+
+    mini-files = {
+      url = "github:echasnovski/mini.files";
       flake = false;
     };
 
   };
-  outputs = { self, home-manager, nixpkgs, neovim-nightly-overlay, ... }@inputs:
+  outputs = { self, home-manager, nixpkgs, neovim-nightly-overlay
+    , shinEngine-nvim, ... }@inputs:
     let
       #pkgs = nixpkgs.legacyPackages.x86_64-linux;
       system = "x86_64-linux";
@@ -114,10 +100,10 @@
       vimPluginsOverlay = final: prev: {
         vimPlugins = prev.vimPlugins // {
           inherit (self.packages.${prev.system})
-            heirline-nvim lsp_lines-nvim null-ls-nvim dressing-nvim nvim-cmp
-            lspkind-nvim onedark-nvim tokyonight-nvim
-          friendly-snippets-vim chatgpt-nvim wezterm-nvim git-worktree-nvim
-          flutter-tools-nvim;
+            heirline-nvim lsp_lines-nvim dressing-nvim 
+            lspkind-nvim onedark-nvim 
+            wezterm-nvim
+            mini-files shinEngine-nvim;
         };
       };
 
@@ -145,40 +131,33 @@
 
         };
       defaultWslUbuntu = wsl2UbuntuSystemFor defaultUser;
-    in
-    {
+    in {
       nixpkgs = pkgs;
-      packages.x86_64-linux =
-        let
-          # This is required to create a proper derivation to reference in the overlay for nixpkgs 
-          mkVimPlugins = pnames:
-            builtins.listToAttrs (builtins.map
-              (pname:
-                pkgs.lib.nameValuePair pname (pkgs.vimUtils.buildVimPlugin {
-                  inherit pname;
-                  src = inputs.${pname};
-                  version = inputs.${pname}.shortRev;
-                }))
-              pnames);
-        in
-        mkVimPlugins [
-          "heirline-nvim"
-          "lsp_lines-nvim"
-          "null-ls-nvim"
-          #"sqls-nvim"
-          "dressing-nvim"
-          "nvim-cmp"
-          "lspkind-nvim"
-          "onedark-nvim"
-          "tokyonight-nvim"
-          "friendly-snippets-vim"
-          "copilot-cmp"
-          "copilot-lua"
-          "chatgpt-nvim"
-          "wezterm-nvim"
-          "git-worktree-nvim"
-          "flutter-tools-nvim"
-        ];
+      packages.x86_64-linux = let
+        # This is required to create a proper derivation to reference in the overlay for nixpkgs 
+        mkVimPlugins = pnames:
+          builtins.listToAttrs (builtins.map (pname:
+            pkgs.lib.nameValuePair pname (pkgs.vimUtils.buildVimPlugin {
+              inherit pname;
+              src = inputs.${pname};
+              version = inputs.${pname}.shortRev;
+            })) pnames);
+      in mkVimPlugins [
+        "heirline-nvim"
+        "lsp_lines-nvim"
+        #"sqls-nvim"
+        "dressing-nvim"
+        "lspkind-nvim"
+        "onedark-nvim"
+        "copilot-cmp"
+        "copilot-lua"
+        "wezterm-nvim"
+        #"git-worktree-nvim"
+        #"flutter-tools-nvim"
+        "mini-files"
+      ] // {
+        shinEngine-nvim = shinEngine-nvim.packages.x86_64-linux.default;
+      };
       wsl2ubuntuDefaultUser = defaultWslUbuntu.activationPackage;
       wsl2ubuntug49771 = (wsl2UbuntuSystemFor "g49771").activationPackage;
       defaultPackage.x86_64-linux = defaultWslUbuntu.activationPackage;

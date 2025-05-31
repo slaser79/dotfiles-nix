@@ -13,9 +13,9 @@ require("lsp")
 vim.api.nvim_set_keymap("i", "<C-d>", "<ESC>diwi", { silent = true, noremap = true })
 
 -- gitsigns
-require('gitsigns').setup{
+require("gitsigns").setup({
   on_attach = function(bufnr)
-    local gitsigns = require('gitsigns')
+    local gitsigns = require("gitsigns")
 
     local function map(mode, l, r, opts)
       opts = opts or {}
@@ -24,48 +24,56 @@ require('gitsigns').setup{
     end
 
     -- Navigation
-    map('n', ']c', function()
+    map("n", "]c", function()
       if vim.wo.diff then
-        vim.cmd.normal({']c', bang = true})
+        vim.cmd.normal({ "]c", bang = true })
       else
-        gitsigns.nav_hunk('next')
+        gitsigns.nav_hunk("next")
       end
     end)
 
-    map('n', '[c', function()
+    map("n", "[c", function()
       if vim.wo.diff then
-        vim.cmd.normal({'[c', bang = true})
+        vim.cmd.normal({ "[c", bang = true })
       else
-        gitsigns.nav_hunk('prev')
+        gitsigns.nav_hunk("prev")
       end
     end)
 
     -- Actions
-    map('n', '<leader>hs', gitsigns.stage_hunk)
-    map('n', '<leader>hr', gitsigns.reset_hunk)
-    map('v', '<leader>hs', function() gitsigns.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    map('v', '<leader>hr', function() gitsigns.reset_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
-    map('n', '<leader>hS', gitsigns.stage_buffer)
-    map('n', '<leader>hu', gitsigns.undo_stage_hunk)
-    map('n', '<leader>hR', gitsigns.reset_buffer)
-    map('n', '<leader>hp', gitsigns.preview_hunk)
-    map('n', '<leader>hb', function() gitsigns.blame_line{full=true} end)
-    map('n', '<leader>tb', gitsigns.toggle_current_line_blame)
-    map('n', '<leader>hd', gitsigns.diffthis)
-    map('n', '<leader>hD', function() gitsigns.diffthis('~') end)
-    map('n', '<leader>td', gitsigns.toggle_deleted)
+    map("n", "<leader>hs", gitsigns.stage_hunk)
+    map("n", "<leader>hr", gitsigns.reset_hunk)
+    map("v", "<leader>hs", function()
+      gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+    end)
+    map("v", "<leader>hr", function()
+      gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+    end)
+    map("n", "<leader>hS", gitsigns.stage_buffer)
+    map("n", "<leader>hu", gitsigns.undo_stage_hunk)
+    map("n", "<leader>hR", gitsigns.reset_buffer)
+    map("n", "<leader>hp", gitsigns.preview_hunk)
+    map("n", "<leader>hb", function()
+      gitsigns.blame_line({ full = true })
+    end)
+    map("n", "<leader>tb", gitsigns.toggle_current_line_blame)
+    map("n", "<leader>hd", gitsigns.diffthis)
+    map("n", "<leader>hD", function()
+      gitsigns.diffthis("~")
+    end)
+    map("n", "<leader>td", gitsigns.toggle_deleted)
 
     -- Text object
-    map({'o', 'x'}, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
-  end
-}
+    map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")
+  end,
+})
 
 require("lightspeed").setup({})
 
 --colorscheme setup
 require("tokyonight").setup({
   transparent = true,
-  cache = true
+  cache = true,
 })
 vim.cmd([[colorscheme tokyonight]])
 require("statusline")
@@ -347,20 +355,32 @@ vim.keymap.set(
 )
 
 --flutter tools setup
-require("flutter-tools").setup {}
+require("flutter-tools").setup({})
 
 -- For Ruff
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup('lsp_attach_disable_ruff_hover', { clear = true }),
+  group = vim.api.nvim_create_augroup("lsp_attach_disable_ruff_hover", { clear = true }),
   callback = function(args)
     local client = vim.lsp.get_client_by_id(args.data.client_id)
     if client == nil then
       return
     end
-    if client.name == 'ruff' then
+    if client.name == "ruff" then
       -- Disable hover in favor of Pyright
       client.server_capabilities.hoverProvider = false
     end
   end,
-  desc = 'LSP: Disable hover capability from Ruff',
+  desc = "LSP: Disable hover capability from Ruff",
 })
+
+-- for mini-files
+local MiniFiles = require("mini.files")
+vim.keymap.set("n", "-", function()
+  local buf_name = vim.api.nvim_buf_get_name(0)
+  local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
+  MiniFiles.open(path)
+  MiniFiles.reveal_cwd()
+end, { desc = "Open Mini Files" })
+
+--shinengine setup
+require("shinengine").setup({ devmode = false })

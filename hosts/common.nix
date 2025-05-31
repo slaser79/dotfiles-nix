@@ -50,7 +50,7 @@
       grip
       ncdu
       niv
-      nixfmt
+      nixfmt-rfc-style
       nodejs
       numactl
       pandoc

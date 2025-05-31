@@ -1,4 +1,4 @@
-require('lsp.null_ls')
+require('lsp.none_ls')
 
 local map_opts = { noremap = true, silent = true }
 local icons = require('lsp.icons')
@@ -35,7 +35,7 @@ local shared_config = {
 }
 
 local lspconfig = require('lspconfig')
-local servers = { 'lua_ls', 'nil_ls', 'ccls', 'texlab', 'bashls', 'pyright', 'hls','tsserver','tailwindcss', 'dartls'}
+local servers = { 'lua_ls', 'nil_ls', 'ccls', 'texlab', 'bashls', 'pyright', 'hls','ts_ls','tailwindcss', 'dartls', 'ruff'}
 
 -- Apply server-specific config from lsp dir
 for _, server in ipairs(servers) do

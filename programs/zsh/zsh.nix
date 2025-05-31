@@ -4,7 +4,7 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
-    initExtraBeforeCompInit = builtins.readFile ./zshrc;
+    initContent = builtins.readFile ./zshrc;
     plugins = [
                  {
                     name = "powerlevel10k";

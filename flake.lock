@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "chatgpt-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719039315,
-        "narHash": "sha256-sRW0qGae1R/aDH9fVV953soS52pPyuf4d1bAcqFq/ME=",
-        "owner": "jackMort",
-        "repo": "ChatGPT.nvim",
-        "rev": "f081338f07216a46d3915ce46c1fcb083bcb5016",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jackMort",
-        "repo": "ChatGPT.nvim",
-        "type": "github"
-      }
-    },
     "copilot-cmp": {
       "flake": false,
       "locked": {
@@ -138,35 +122,21 @@
         "type": "indirect"
       }
     },
-    "flutter-tools-nvim": {
-      "flake": false,
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
       "locked": {
-        "lastModified": 1728624414,
-        "narHash": "sha256-GS6k8J31rYBycVUqbVH3W+G1hnx727hL2OJnirCejvg=",
-        "owner": "nvim-flutter",
-        "repo": "flutter-tools.nvim",
-        "rev": "6bf887bb9442b80a67f36e7465a66de4202d8a3f",
+        "lastModified": 1731533236,
+        "narHash": "sha256-l0KFg5HjrsfsO/JpG+r7fRrqm12kzFHyUHqHCVpMMbI=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "11707dc2f618dd54ca8739b309ec4fc024de578b",
         "type": "github"
       },
       "original": {
-        "owner": "nvim-flutter",
-        "repo": "flutter-tools.nvim",
-        "type": "github"
-      }
-    },
-    "friendly-snippets-vim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1721003887,
-        "narHash": "sha256-kwGyfXZ+jZ3PIniESUGBltBm2fRXV5ArNhSo+zosdco=",
-        "owner": "rafamadriz",
-        "repo": "friendly-snippets",
-        "rev": "00ebcaa159e817150bd83bfe2d51fa3b3377d5c4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "rafamadriz",
-        "repo": "friendly-snippets",
+        "owner": "numtide",
+        "repo": "flake-utils",
         "type": "github"
       }
     },
@@ -194,22 +164,6 @@
       "original": {
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "type": "github"
-      }
-    },
-    "git-worktree-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1723000367,
-        "narHash": "sha256-db5z9j+HTPcOeBjnX8T7syLt4zNDvm45V0lXrD8q6oY=",
-        "owner": "polarmutex",
-        "repo": "git-worktree.nvim",
-        "rev": "500629d0ad916ec362f53ecf21f84f3ba445f73e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "polarmutex",
-        "repo": "git-worktree.nvim",
         "type": "github"
       }
     },
@@ -280,11 +234,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1721135958,
-        "narHash": "sha256-H548rpPMsn25LDKn1PCFmPxmWlClJJGnvdzImHkqjuY=",
+        "lastModified": 1745494811,
+        "narHash": "sha256-YZCh2o9Ua1n9uCvrvi5pRxtuVNml8X2a03qIFfRKpFs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "afd2021bedff2de92dfce0e257a3d03ae65c603d",
+        "rev": "abfad3d2958c9e6300a883bd443512c55dfeb1be",
         "type": "github"
       },
       "original": {
@@ -323,6 +277,22 @@
       "original": {
         "owner": "onsails",
         "repo": "lspkind-nvim",
+        "type": "github"
+      }
+    },
+    "mini-files": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1740838433,
+        "narHash": "sha256-uH1gVmJ/kv70kt1CgR75+0Z6XU8M0RAhpVIAZpRpsqs=",
+        "owner": "echasnovski",
+        "repo": "mini.files",
+        "rev": "0a396f5ca5516a07959ae2c00667e1a26c20f0ea",
+        "type": "github"
+      },
+      "original": {
+        "owner": "echasnovski",
+        "repo": "mini.files",
         "type": "github"
       }
     },
@@ -404,49 +374,17 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1721379653,
-        "narHash": "sha256-8MUgifkJ7lkZs3u99UDZMB4kbOxvMEXQZ31FO3SopZ0=",
+        "lastModified": 1745391562,
+        "narHash": "sha256-sPwcCYuiEopaafePqlG826tBhctuJsLx/mhKKM5Fmjo=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1d9c2c9b3e71b9ee663d11c5d298727dace8d374",
+        "rev": "8a2f738d9d1f1d986b5a4cd2fd2061a7127237d7",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
         "ref": "nixos-unstable",
         "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "null-ls-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1691810493,
-        "narHash": "sha256-cWA0rzkOp/ekVKaFee7iea1lhnqKtWUIU+fW5M950wI=",
-        "owner": "jose-elias-alvarez",
-        "repo": "null-ls.nvim",
-        "rev": "0010ea927ab7c09ef0ce9bf28c2b573fc302f5a7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jose-elias-alvarez",
-        "repo": "null-ls.nvim",
-        "type": "github"
-      }
-    },
-    "nvim-cmp": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1721093634,
-        "narHash": "sha256-jc4fQBaAuL4XhHljVU3sdaEyQCnHbI+gwNOTnGHk0qM=",
-        "owner": "hrsh7th",
-        "repo": "nvim-cmp",
-        "rev": "d818fd0624205b34e14888358037fb6f5dc51234",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hrsh7th",
-        "repo": "nvim-cmp",
         "type": "github"
       }
     },
@@ -463,6 +401,22 @@
       "original": {
         "owner": "navarasu",
         "repo": "onedark.nvim",
+        "type": "github"
+      }
+    },
+    "plenary": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739311008,
+        "narHash": "sha256-8FV5RjF7QbDmQOQynpK7uRKONKbPRYbOPugf9ZxNvUs=",
+        "owner": "nvim-lua",
+        "repo": "plenary.nvim",
+        "rev": "857c5ac632080dba10aae49dba902ce3abf91b35",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nvim-lua",
+        "repo": "plenary.nvim",
         "type": "github"
       }
     },
@@ -490,40 +444,53 @@
     },
     "root": {
       "inputs": {
-        "chatgpt-nvim": "chatgpt-nvim",
         "copilot-cmp": "copilot-cmp",
         "copilot-lua": "copilot-lua",
         "dressing-nvim": "dressing-nvim",
-        "flutter-tools-nvim": "flutter-tools-nvim",
-        "friendly-snippets-vim": "friendly-snippets-vim",
-        "git-worktree-nvim": "git-worktree-nvim",
         "heirline-nvim": "heirline-nvim",
         "home-manager": "home-manager",
         "lsp_lines-nvim": "lsp_lines-nvim",
         "lspkind-nvim": "lspkind-nvim",
+        "mini-files": "mini-files",
         "neovim-nightly-overlay": "neovim-nightly-overlay",
         "nixpkgs": "nixpkgs_2",
-        "null-ls-nvim": "null-ls-nvim",
-        "nvim-cmp": "nvim-cmp",
         "onedark-nvim": "onedark-nvim",
         "rnix-lsp": "rnix-lsp",
-        "tokyonight-nvim": "tokyonight-nvim",
+        "shinEngine-nvim": "shinEngine-nvim",
         "wezterm-nvim": "wezterm-nvim"
       }
     },
-    "tokyonight-nvim": {
-      "flake": false,
+    "shinEngine-nvim": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "plenary": "plenary"
+      },
       "locked": {
-        "lastModified": 1721292526,
-        "narHash": "sha256-NWbI9g1UoiN/h+8JPeFZLN+Uh261fjiZviDMHQWM2Ks=",
-        "owner": "folke",
-        "repo": "tokyonight.nvim",
-        "rev": "1471dab694ad88351185758bb4275624d8b798ec",
+        "lastModified": 1741533853,
+        "narHash": "sha256-e31Dj+oiy86FDFV6fB2VP06LWy6diy95jsA/jQCayE4=",
+        "path": "/home/slaser79/lab/shinEngine-nvim",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/slaser79/lab/shinEngine-nvim",
+        "type": "path"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
         "type": "github"
       },
       "original": {
-        "owner": "folke",
-        "repo": "tokyonight.nvim",
+        "owner": "nix-systems",
+        "repo": "default",
         "type": "github"
       }
     },

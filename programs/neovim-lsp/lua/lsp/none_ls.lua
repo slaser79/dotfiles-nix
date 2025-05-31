@@ -1,12 +1,12 @@
-local ok, null_ls = pcall(require, 'null-ls')
+local ok, none_ls = pcall(require, 'none_ls')
 if not ok then
   return
 end
 
-local formatting = null_ls.builtins.formatting
-local diagnostics = null_ls.builtins.diagnostics
+local formatting = none_ls.builtins.formatting
+local diagnostics = none_ls.builtins.diagnostics
 
-null_ls.setup({
+none_ls.setup({
   debug = false,
   sources = {
     formatting.nixfmt,
