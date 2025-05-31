@@ -13,7 +13,7 @@
     tmuxinator.enable = true;
     baseIndex = 1;
     keyMode = "vi";
-    prefix = "C-b";
+    prefix = "C-space";
     historyLimit = 100000;
     extraConfig = builtins.readFile ./tmux.conf + builtins.readFile ./theme.conf + ''
       set -g default-command ${pkgs.zsh}/bin/zsh
