@@ -8,9 +8,9 @@
       lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit";
     };
     extraConfig = {
-      core.editor = "vim";
+      core.editor = "nvim";
       init.defaultBranch = "main";
-      diff.tool = "vimdiff";
+      diff.tool = "nvimdiff";
       diff.colorMoved = "zebra";
       difftool.prompt = false;
       difftool.trustExitCode = true;
@@ -24,6 +24,10 @@
       fetch.prune = true;
       pull.rebase = true;
       push.default = "upstream";
+      credential = {
+        helper = "store"; 
+        "https://github.com".username  = "slaser79"; 
+      };
     };
     ignores = [
       "\#*\#"

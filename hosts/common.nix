@@ -46,6 +46,7 @@
       direnv
       entr
       ghcid
+      git-credential-manager
       glow
       grip
       ncdu
